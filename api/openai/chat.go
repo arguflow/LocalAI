@@ -24,6 +24,7 @@ func ChatEndpoint(cm *config.ConfigLoader, o *options.Option) func(c *fiber.Ctx)
 
 	process := func(s string, req *schema.OpenAIRequest, config *config.Config, loader *model.ModelLoader, responses chan schema.OpenAIResponse) {
 		initialMessage := schema.OpenAIResponse{
+			ID:      req.ID,
 			Model:   req.Model, // we have to return what the user sent here, due to OpenAI spec.
 			Choices: []schema.Choice{{Delta: &schema.Message{Role: "assistant", Content: &emptyMessage}}},
 			Object:  "chat.completion.chunk",
@@ -32,6 +33,7 @@ func ChatEndpoint(cm *config.ConfigLoader, o *options.Option) func(c *fiber.Ctx)
 
 		ComputeChoices(req, s, config, o, loader, func(s string, c *[]schema.Choice) {}, func(s string, usage backend.TokenUsage) bool {
 			resp := schema.OpenAIResponse{
+				ID:	  req.ID,
 				Model:   req.Model, // we have to return what the user sent here, due to OpenAI spec.
 				Choices: []schema.Choice{{Delta: &schema.Message{Content: &s}, Index: 0}},
 				Object:  "chat.completion.chunk",
@@ -261,6 +263,7 @@ func ChatEndpoint(cm *config.ConfigLoader, o *options.Option) func(c *fiber.Ctx)
 				}
 
 				resp := &schema.OpenAIResponse{
+					ID:     input.ID,
 					Model: input.Model, // we have to return what the user sent here, due to OpenAI spec.
 					Choices: []schema.Choice{
 						{
@@ -355,6 +358,7 @@ func ChatEndpoint(cm *config.ConfigLoader, o *options.Option) func(c *fiber.Ctx)
 		}
 
 		resp := &schema.OpenAIResponse{
+			ID:      input.ID,
 			Model:   input.Model, // we have to return what the user sent here, due to OpenAI spec.
 			Choices: result,
 			Object:  "chat.completion",
