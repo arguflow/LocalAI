@@ -10,7 +10,7 @@ go-ggllm
 __pycache__/
 *.a
 get-sources
-
+go-ggml-transformers/build/*
 go-ggml-transformers
 go-gpt2
 go-rwkv

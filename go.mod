@@ -92,3 +92,23 @@ require (
 	golang.org/x/text v0.12.0 // indirect
 	golang.org/x/tools v0.12.0 // indirect
 )
+
+replace github.com/nomic-ai/gpt4all/gpt4all-bindings/golang => /Users/denssumesh/LocalAI/gpt4all/gpt4all-bindings/golang
+
+replace github.com/go-skynet/go-ggml-transformers.cpp => /Users/denssumesh/LocalAI/go-ggml-transformers
+
+replace github.com/donomii/go-rwkv.cpp => /Users/denssumesh/LocalAI/go-rwkv
+
+replace github.com/ggerganov/whisper.cpp => /Users/denssumesh/LocalAI/whisper.cpp
+
+replace github.com/go-skynet/go-bert.cpp => /Users/denssumesh/LocalAI/go-bert
+
+replace github.com/go-skynet/bloomz.cpp => /Users/denssumesh/LocalAI/bloomz
+
+replace github.com/mudler/go-stable-diffusion => /Users/denssumesh/LocalAI/go-stable-diffusion
+
+replace github.com/mudler/go-piper => /Users/denssumesh/LocalAI/go-piper
+
+replace github.com/mudler/go-ggllm.cpp => /Users/denssumesh/LocalAI/go-ggllm
+
+replace github.com/go-skynet/go-llama.cpp => /Users/denssumesh/LocalAI/go-llama-stable
